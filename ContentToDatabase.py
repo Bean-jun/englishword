@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import sqlite3
 import logging
+import pymysql
 
 
 class DatabaseOperate(object):
@@ -17,9 +18,12 @@ class DatabaseOperate(object):
     __fmt = "{asctime},{levelname},{funcName},{message},{process}"
     logging.basicConfig(filename='./.log', filemode='a', level=logging.DEBUG, format=__fmt, style='{')
 
-    def __init__(self, database):
+    def __init__(self, *args, **kwargs):
         try:
-            db_client = sqlite3.connect(database)
+            if bool(kwargs.keys()) is False and bool(args) is True:
+                db_client = sqlite3.connect(args[0])
+            else:
+                db_client = pymysql.connect(**kwargs)
         except Exception as e:
             logging.warning("---->Database Connect Error:{}<----".format(e.args[0]))
         else:
