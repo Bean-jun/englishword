@@ -54,7 +54,8 @@ class UserDataInsert(object):
 
     def __user_register(self):
         if self._flag is False:
-            end_user_id = list(get_result("""select userid from user_table"""))[-1]
+            end_user_id = list(get_result("""select userid from user_table"""))
+            end_user_id = [0] if bool(end_user_id) is False else end_user_id[-1]
             fake_user_id = end_user_id[0] + 1
             db.insert('user_table', userid=fake_user_id, username=self.name, password=self.password)
             self._flag = True
