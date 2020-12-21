@@ -3,14 +3,12 @@ import time
 import random
 import urllib.parse
 
-from GetResult import get_result
 from TranslationPack import YouDaoTranslate, BaiDuTranslate
-from ContentToDatabase import DatabaseOperate
+from ConnectFile import read_config_of_db
 
 
 def get_translation(*args):
-    DATE_BASE = './WordLearn.db'
-    db = DatabaseOperate(DATE_BASE, )
+    db = read_config_of_db()
     for word in args:
         tag = random.uniform(0, 2)
         try:
@@ -20,7 +18,7 @@ def get_translation(*args):
             flag = tag >= 0.5 and 65 < word_to_num < 122
 
             # 判断当前单词是否存在数据库中,get_download_flag为False则表明不存在
-            get_download_flag = bool(list(get_result("""select word from word_table where word='{}'""".format(word))))
+            get_download_flag = bool(list(db.select("""select word from word_table where word='{}'""".format(word))))
 
             if get_download_flag is False:
 
