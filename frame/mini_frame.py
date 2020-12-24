@@ -1,3 +1,10 @@
+import re
+
+from frame.ToolBox.ConnectFile import read_config_of_db
+
+# 连接数据库
+_db = read_config_of_db()
+
 # 配置路由
 URL_CONTENT_DICT = dict()
 
@@ -13,10 +20,30 @@ def route(string):
     return call_func
 
 
-@route('/index.mini')
+@route('/index.html')
 def index():
     with open("templates/index.html", encoding='utf-8') as f:
-        return f.read()
+        data = f.read()
+
+    word_content = tuple(_db.select("select * from word_table"))
+
+    html = """"""
+    for word_info in word_content:
+        html_templates = """
+            <tr>
+                <th>{}</th>
+                <th>{}</th>
+    
+            </tr>
+            <tr>
+                <th colspan="2">{}</th>
+            </tr>
+        """.format(word_info[1], word_info[2], None)
+
+        html += html_templates
+
+        data = re.sub(r"\{%content%\}", str(html), data)
+        return data
 
 
 def application(env, set_header):

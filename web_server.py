@@ -33,9 +33,10 @@ class WSGIServer(object):
                 if file_name == '/':
                     file_name = '/index.html'
 
-            if not file_name.endswith('.mini'):
+            # 让网站支持伪静态，非html通过服务器直接加载
+            if not file_name.endswith('.html'):
                 try:
-                    with open("templates"+file_name, 'rb') as f:
+                    with open("./static"+file_name, 'rb') as f:
                         body = f.read().decode('utf-8')
                 except Exception as e:
                     print(e.args)

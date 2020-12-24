@@ -1,7 +1,7 @@
 import hashlib
 
-from GetTranslation import get_translation
-from ConnectFile import read_config_of_db
+from frame.ToolBox.GetTranslation import get_translation
+from frame.ToolBox.ConnectFile import read_config_of_db
 
 
 # 连接数据库

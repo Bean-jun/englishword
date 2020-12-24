@@ -1,10 +1,10 @@
 import json
 
-from ContentToDatabase import DatabaseOperate
+from frame.ToolBox.ContentToDatabase import DatabaseOperate
 
 
 def read_config_of_db():
-    with open('config.conf', 'r', encoding='utf-8') as f:
+    with open('./config.conf', 'r', encoding='utf-8') as f:
         config = json.load(f)
     try:
         k = ''

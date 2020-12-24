@@ -3,8 +3,8 @@ import time
 import random
 import urllib.parse
 
-from TranslationPack import YouDaoTranslate, BaiDuTranslate
-from ConnectFile import read_config_of_db
+from frame.ToolBox.TranslationPack import YouDaoTranslate, BaiDuTranslate
+from frame.ToolBox.ConnectFile import read_config_of_db
 
 
 def get_translation(*args):
@@ -22,7 +22,7 @@ def get_translation(*args):
 
             if get_download_flag is False:
 
-                FILE_PATH = "{}/{}.mpeg".format('./Media', urllib.parse.quote(word))
+                FILE_PATH = "{}/{}.mpeg".format('./static/Media', urllib.parse.quote(word))
 
                 if flag is False:
                     time.sleep(1)
