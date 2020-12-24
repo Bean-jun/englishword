@@ -1,4 +1,4 @@
-from ContentToDatabase import DatabaseOperate
+from frame.ToolBox.ContentToDatabase import DatabaseOperate
 
 
 def get_result(*args):
