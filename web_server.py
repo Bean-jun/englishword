@@ -37,7 +37,7 @@ class WSGIServer(object):
             if not file_name.endswith('.html'):
                 try:
                     with open("./static"+file_name, 'rb') as f:
-                        body = f.read().decode('utf-8')
+                        body = f.read()
                 except Exception as e:
                     print(e.args)
                     header = "HTTP/1.1 404 NOT FOUND\r\n"
@@ -51,9 +51,8 @@ class WSGIServer(object):
                     header = "HTTP/1.1 200 OK\r\n"
                     header += "\r\n"
 
-                    response = header + body
-
-                    tcp_client.send(response.encode('utf-8'))
+                    tcp_client.send(header.encode('utf-8'))
+                    tcp_client.send(body)
             else:
                 env = dict()
                 env["PATH_INFO"] = file_name

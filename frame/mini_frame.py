@@ -20,6 +20,13 @@ def route(string):
     return call_func
 
 
+@route('/login.html')
+def login():
+    with open("templates/login.html", encoding='utf-8') as f:
+        data = f.read()
+    return data
+
+
 @route('/index.html')
 def index():
     with open("templates/index.html", encoding='utf-8') as f:
