@@ -13,3 +13,4 @@ test_data.py
 *.mpeg
 __pycache__/
 *.txt
+*.sqlite3

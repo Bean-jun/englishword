@@ -1,0 +1,32 @@
+.ico{
+    overflow: hidden;
+    margin: -10px -3px;
+    padding: 10px 10px 10px;
+    background-color: rgba(246,246,246,0.65);
+}
+
+.content{
+    margin: 200px -3px auto;
+    color: black;
+    font-weight: normal;
+}
+
+.content h3{
+    margin: auto 10px 100px;
+    background-color: rgba(232,232,232,0.65);
+    padding: 40px;
+    font-size: 80px;
+    text-align: center;
+
+}
+.content p{
+    margin: 100px 10px auto;
+    font-size: 40px;
+    line-height: 80px;
+    text-indent: 80px;
+}
+
+.content a{
+    color: rgba(85,26,139,0.65);
+    text-decoration: none;
+}

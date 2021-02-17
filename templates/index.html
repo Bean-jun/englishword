@@ -1,47 +1,52 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-    <meta charset="UTF-8">
-    <title>单词学习网站</title>
-<!--    <style type="text/css">-->
-<!--        body{-->
-<!--            margin: 0;-->
-<!--        }-->
-<!--        .box{-->
-<!--            margin: 100px auto;-->
-<!--            /*border: 10px solid black;*/-->
-<!--            /*padding: 350px 0px 150px 0px;*/-->
-<!--            background-color: white;-->
-<!--        }-->
-<!--        .box tr{-->
-<!--            background-color: rgba(231,231,231,0.65);-->
-<!--        }-->
-<!--    </style>-->
-    <link rel="stylesheet" type="text/css" href="./css/index.css">
-</head>
-<body>
-    <div class="ico">
-        <a href="index.html" title="主页" target="_self">
-            <img src="./images/home.png" alt="主页" width="50" height="50" style="float: left">
-        </a>
-        <a href="#" title="个人中心" target="_self">
-            <img src="./images/user.png" alt="个人中心" width="50" height="50" style="float: right">
-        </a>
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+    首页
+{% endblock title %}
+
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+{% endblock css %}
+
+{% block head %}
+    <a href="/">
+        <img src="{% static 'images/home.png' %}" alt="home" id="img-1">
+    </a>
+
+    <div class="header">
+            <form method="get" action="/translate">
+                <input type="text" name="word" class="search">
+            </form>
+<!--            <a href="#">-->
+<!--                <img src="{% static 'images/search.png' %}" alt="search" id="img-search">-->
+<!--            </a>-->
     </div>
 
-    <div class="content">
-        <h3>
-            背单词
-        </h3>
-        <p>
-            欢迎来到单词学习基地，在这里你可以定制自己的单词学习计划，实现自己的单词记忆库！让记忆单词变得更加轻松。</br>
-            &nbsp;&nbsp;&nbsp;<a href="#" title="" target="_self">注册</a>或者<a href="login.html" title="" target="_self">登录</a>您的账号开始学习吧！
-        </p>
+    <a href="/admin">
+    <img src="{% static 'images/user.png' %}" alt="home" id="img-2">
+    </a>
+
+{% endblock head %}
+
+
+{% block body %}
+    <a href="/left">
+        <img src="{% static 'images/arrow-left-bold.png' %}" alt="left" id="img-left">
+    </a>
+
+    <div class="text">
+        <p class="word">{{ content.word }}</p>
+        <p class="translate">{{ content.trans }}</p>
     </div>
-<!--    <div >-->
-<!--            <table class="box" border="0" cellspacing="0" cellpadding="60" align="center">-->
-<!--                 {%content%}-->
-<!--            </table>-->
-<!--    </div>-->
-</body>
-</html>
+
+    <a href="/right">
+        <img src="{% static 'images/arrow-right-bold.png' %}" alt="right" id="img-right">
+    </a>
+{% endblock body %}
+
+{% block footer %}
+    <div class="footer">谢谢关注小站.</div>
+{% endblock footer %}
